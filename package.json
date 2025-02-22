@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Dante451/back-end-assignment-3#readme",
   "dependencies": {
     "express": "^4.21.2",
+    "joi": "^17.13.3",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
