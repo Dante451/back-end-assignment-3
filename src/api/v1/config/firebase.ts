@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Load Firebase service account credentials
-const serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS || "./assignment03bed-firebase-adminsdk-fbsvc-0e29e6e58c.json");
+const serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS || "./assignment-3-96ab3-firebase-adminsdk-fbsvc-ef2e24c38b.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
