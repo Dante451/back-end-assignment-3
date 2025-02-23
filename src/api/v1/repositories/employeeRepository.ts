@@ -5,7 +5,7 @@ const db = admin.firestore();
 const employeesCollection = db.collection("employees");
 
 class EmployeeRepository {
-  // 🔹 Create Employee
+  // Create Employee
   async createEmployee(employeeData: any) {
     try {
       const newEmployeeRef = await employeesCollection.add(employeeData);
@@ -16,17 +16,17 @@ class EmployeeRepository {
     }
   }
 
-  // 🔹 Get All Employees
+  // Get All Employees
   async getAllEmployees() {
     try {
       const snapshot = await employeesCollection.get();
-      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      return snapshot.docs.map((doc: { id: any; data: () => any; }) => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       throw new RepositoryError("Failed to fetch employees", error);
     }
   }
 
-  // 🔹 Get Employee By ID
+  // Get Employee By ID
   async getEmployeeById(id: string) {
     try {
       const doc = await employeesCollection.doc(id).get();
@@ -39,7 +39,7 @@ class EmployeeRepository {
     }
   }
 
-  // 🔹 Update Employee
+  // Update Employee
   async updateEmployee(id: string, updateData: any) {
     try {
       const employeeRef = employeesCollection.doc(id);
@@ -55,7 +55,7 @@ class EmployeeRepository {
     }
   }
 
-  // 🔹 Delete Employee
+  // Delete Employee
   async deleteEmployee(id: string) {
     try {
       const employeeRef = employeesCollection.doc(id);
@@ -70,25 +70,25 @@ class EmployeeRepository {
     }
   }
 
-  // 🔹 Get Employees by Branch ✅ FIXED to prevent failures
+  // Get Employees by Branch 
   async getEmployeesByBranch(branchId: string) {
     try {
       if (!branchId) throw new RepositoryError("Branch ID is required", null);
       const snapshot = await employeesCollection.where("branchId", "==", branchId).get();
       if (snapshot.empty) return [];
-      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      return snapshot.docs.map((doc: { id: any; data: () => any; }) => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       throw new RepositoryError(`Failed to get employees for branch ${branchId}`, error);
     }
   }
 
-  // 🔹 Get Employees by Department ✅ FIXED to prevent failures
+  // Get Employees by Department 
   async getEmployeesByDepartment(department: string) {
     try {
       if (!department) throw new RepositoryError("Department is required", null);
       const snapshot = await employeesCollection.where("department", "==", department).get();
       if (snapshot.empty) return [];
-      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      return snapshot.docs.map((doc: { id: any; data: () => any; }) => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
       throw new RepositoryError(`Failed to get employees for department ${department}`, error);
     }
