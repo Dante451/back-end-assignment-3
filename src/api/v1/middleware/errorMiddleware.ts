@@ -41,7 +41,7 @@ class InternalServerError extends CustomError {
   }
 }
 
-// 🔹 NEW: Repository Error for Firestore Handling
+// Repository Error for Firestore Handling
 class RepositoryError extends CustomError {
   constructor(message: string, error?: any) {
     super(message, 500);

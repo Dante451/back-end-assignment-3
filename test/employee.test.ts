@@ -18,10 +18,10 @@ describe("Employee API Endpoints", () => {
   
     it("should create a new employee", async () => {
       const newEmployee = {
-        name: "Raju",
+        name: "Daniel",
         position: "Software Engineer",
         department: "IT",
-        email: "raju@example.com",
+        email: "daniel@example.com",
         phone: "675-567-7564",
         branchId: 1,
       };
@@ -42,7 +42,7 @@ describe("Employee API Endpoints", () => {
     it("should return the created employee by ID", async () => {
       const response = await request(app).get(`/api/v1/employees/${createdEmployeeId}`);
       expect(response.status).toBe(200);
-      expect(response.body).toHaveProperty("name", "Raju");
+      expect(response.body).toHaveProperty("name", "Daniel");
     });
   
     it("should update an employee", async () => {
